@@ -18,7 +18,7 @@ public class Jeu {
 
         while (true){
             EKOConsole.effacer();
-            
+
             maintenant = System.nanoTime();
             deltaTemps = maintenant - dernierTemps;
             dernierTemps = maintenant;

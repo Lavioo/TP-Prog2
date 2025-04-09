@@ -7,7 +7,7 @@ public class Jeu {
     private static final long MS_PAR_TRAME = 1000 / TPS;
 
     public static void init(){
-
+        EKO.initialiser("Froggyrinthe", 50, 15);
     }
 
     private static void loop(){

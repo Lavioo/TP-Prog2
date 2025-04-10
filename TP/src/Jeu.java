@@ -3,11 +3,13 @@ import eko.EKOConsole;
 
 public class Jeu {
 
-    private static final int TPS = 30;
+    private static final int TPS = 20;
     private static final long MS_PAR_TRAME = 1000 / TPS;
 
     public static void init(){
+        LireMap.OuvrirMap();
         EKO.initialiser("Froggyrinthe", 50, 15);
+        loop();
     }
 
     private static void loop(){
@@ -15,7 +17,7 @@ public class Jeu {
         long maintenant;
         long deltaTemps;
         long dernierTemps = System.nanoTime();
-
+        Maps carte = new Maps();
         while (true){
             EKOConsole.effacer();
 

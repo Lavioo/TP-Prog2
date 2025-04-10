@@ -2,6 +2,7 @@ public abstract class ObjetJeu {
     protected String nom;
     protected Etiquette etiquette;
     protected Position position;
+    protected Position positionInitial;
 
     private boolean actif;
     private boolean detruire;
@@ -28,6 +29,7 @@ public abstract class ObjetJeu {
     protected ObjetJeu(String nom, int x, int y, Etiquette etiquette) {
         this.nom = nom;
         this.position = new Position(x, y, 0);
+        this.positionInitial = position;
         this.etiquette = etiquette;
         this.detruire = false;
         this.actif = true;
@@ -73,6 +75,11 @@ public abstract class ObjetJeu {
     public int getX() { return this.position.x; }
     public int getY() { return this.position.y; }
     public int getZ() { return this.position.z; }
+
+    public void remettreAPosInitiale(){
+        System.out.println("Remettre inital pos");
+        position = positionInitial;
+    }
 
     public void setZ(int z) {
         this.position.z = z;

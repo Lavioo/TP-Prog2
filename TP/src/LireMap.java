@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class LireMap {
 
-    private static ArrayList<char[]> listeCartes = new ArrayList();
+
+    public static ArrayList<char[][]> listeCartes = new ArrayList<>();
 
 
 
@@ -14,28 +15,16 @@ public class LireMap {
     File f = new File ("CartesDeJeu");
 
     cheminFichiersMaps = f.list();
-
-    for (String chemin : cheminFichiersMaps) {
-        FileInputStream fichier = ouvrirFichierLecture(chemin);
-        Scanner lecteurFichier = new Scanner(fichier);
-        convertirEnString(lecteurFichier);
-        fermerFichier(fichier);
-
-
+        for (String chemin : cheminFichiersMaps) {
+            FileInputStream fichier = ouvrirFichierLecture("CartesDeJeu\\"+chemin);
+            Scanner lecteurFichier = new Scanner(fichier);
+            convertirEnTabChar(convertirEnString(lecteurFichier));
+            fermerFichier(fichier);
+        }
     }
 
 
-
-
-
-
-
-
-
-}
-
-
-private static ArrayList convertirEnString (Scanner lecteurFichier){
+private static ArrayList<String> convertirEnString (Scanner lecteurFichier){
         String ligne;
         ArrayList<String> listeLigne = new ArrayList<>();
 
@@ -51,11 +40,11 @@ return listeLigne;
 
 
 private static void convertirEnTabChar (ArrayList<String> listeLigne) {
-
+        char[][] cartes = new char[listeLigne.size()][];
         for (int i = 0; i < listeLigne.size(); i++) {
-            listeCartes.add((listeLigne.get(i).toCharArray()));
+            cartes[i] = listeLigne.get(i).toCharArray();
         }
-
+        listeCartes.add(cartes);
 }
 
 

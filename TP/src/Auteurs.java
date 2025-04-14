@@ -11,7 +11,7 @@ public class Auteurs extends Intro {
         super(nom, x, y);
         this.nom = "Thierry Bédard & Vincent Robert";
         trameSonore = EKOAudio.charger("Audios\\EBK Jaaybo - Fck Everybody (Free Maxx) [Official Music Video].wav");
-        EKOAudio.jouer(trameSonore);
+        EKOAudio.jouer(trameSonore, true);
         EKOConsole.couleurFond(EKOCouleur.NOIR);
         EKOConsole.couleurTexte(EKOCouleur.GRIS_PALE);
 

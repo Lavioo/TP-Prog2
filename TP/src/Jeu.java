@@ -9,6 +9,7 @@ public class Jeu {
     public static void init(){
         //LireMap.OuvrirMap();
         EKO.initialiser("Jeu très on frl", 100, 30);
+
         loop();
     }
 

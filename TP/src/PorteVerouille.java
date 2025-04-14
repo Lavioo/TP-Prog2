@@ -2,9 +2,9 @@ import eko.EKOChaine;
 import eko.EKOConsole;
 import eko.EKOCouleur;
 
-public class PorteVerouille extends ObjetJeu{
+public class PorteVerouille extends ObjetsCollisions{
 
-    private EKOChaine caractere = new EKOChaine("\u2503", EKOCouleur.CYAN);
+    private EKOChaine caractere = new EKOChaine("\u2503", EKOCouleur.JAUNE);
 
     protected PorteVerouille(String nom, int x, int y, Etiquette all) {
         super(nom, x, y);

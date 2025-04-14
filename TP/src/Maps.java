@@ -26,6 +26,7 @@ public class Maps{
             break;
             case 'V': new PorteVerouille("PorteVerouille", x, y, Etiquette.ALL);
             break;
+            case 'P': new PorteCondamnee("PorteCondamnee", x, y);
         }
     }
 

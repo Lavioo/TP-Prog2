@@ -24,7 +24,7 @@ public class Joueur extends ObjetVivant{
 
     @Override
     public void gererCollisionAvec(ObjetJeu autre){
-        if (autre instanceof Mur || autre instanceof PorteVerouille){
+        if (autre instanceof ObjetsCollisions){
             position.x = dernierePosition[0];
             position.y = dernierePosition[1];
         }

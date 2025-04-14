@@ -1,9 +1,9 @@
 import eko.EKOConsole;
 import eko.EKOCouleur;
 
-public class Mur extends ObjetJeu{
+public class Mur extends ObjetsCollisions{
 
-    private String caractere = "\u2588";
+    private final String caractere = "\u2588";
 
     protected Mur(String nom, int x, int y, Etiquette all) {
         super(nom, x, y);

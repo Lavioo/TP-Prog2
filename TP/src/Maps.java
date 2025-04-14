@@ -20,7 +20,7 @@ public class Maps{
             break;
             case 'J': maps[x][y] = new Joueur("Joueur", x, y, Etiquette.ALL);
             break;
-            case 'C': maps[x][y] = new Cle("cle", x, y, Etiquette.ALL);
+            case 'C': maps[x][y] = new Clef("cle", x, y, Etiquette.ALL);
             break;
             case 'F': maps[x][y] = new Feu("Feu", x, y, Etiquette.ALL);
             break;

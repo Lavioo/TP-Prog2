@@ -2,8 +2,6 @@ import eko.EKOConsole;
 import eko.EKOCouleur;
 import eko.EKOTouche;
 
-import java.util.ArrayList;
-
 public class Joueur extends ObjetVivant{
 
     private static String caractere = "\uF4FF";
@@ -30,7 +28,7 @@ public class Joueur extends ObjetVivant{
             position.x = dernierePosition[0];
             position.y = dernierePosition[1];
         }
-        if (autre instanceof Cle){
+        if (autre instanceof Clef){
             autre.desactiver();
             GestionnaireObjetsJeu.obtenir().trouverObjetJeu("PorteVerouille").desactiver();
         }

@@ -41,8 +41,8 @@ return listeLigne;
 
 private static void convertirEnTabChar (ArrayList<String> listeLigne) {
         char[][] cartes = new char[listeLigne.size()][];
-        for (int i = 0; i < listeLigne.size(); i++) {
-            cartes[i] = listeLigne.get(i).toCharArray();
+        for (int y = 0; y < listeLigne.size(); y++) {
+            cartes[y] = listeLigne.get(y).toCharArray();
         }
         listeCartes.add(cartes);
 }

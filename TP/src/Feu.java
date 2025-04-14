@@ -4,7 +4,7 @@ import eko.EKOCouleur;
 
 import java.util.Random;
 
-public class Feu extends Ennemis{
+public class Feu extends ObjetVivant {
 
     private Random rand = new Random();;
     private EKOChaine caractere = new EKOChaine("\uE3BF", EKOCouleur.RVB(Math.max(rand.nextInt(256), 200), rand.nextInt(170), 0));

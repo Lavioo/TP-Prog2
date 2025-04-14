@@ -3,12 +3,12 @@ import eko.EKOConsole;
 
 public class Jeu {
 
-    private static final int TPS = 20;
+    private static final int TPS = 30;
     private static final long MS_PAR_TRAME = 1000 / TPS;
 
     public static void init(){
-        LireMap.OuvrirMap();
-        EKO.initialiser("Froggyrinthe", 50, 15);
+        //LireMap.OuvrirMap();
+        EKO.initialiser("Jeu très on frl", 100, 30);
         loop();
     }
 
@@ -17,10 +17,35 @@ public class Jeu {
         long maintenant;
         long deltaTemps;
         long dernierTemps = System.nanoTime();
-        Maps carte = new Maps();
-        while (true){
-            EKOConsole.effacer();
 
+
+
+
+
+
+
+
+
+
+
+        while (true){
+
+
+            Intro intro = new Intro ("...", 50, 15);
+            intro.jouerTrameSonore();
+
+            Auteurs auteurs = new Auteurs("Thierry Bédard & Vincent Robert", 50, 15);
+            auteurs.dessiner();
+
+            TitreJeu titre = new TitreJeu("Jeu Méga On", 50, 15);
+            titre.dessiner();
+
+
+            Maps maps = new Maps();
+
+
+
+            EKOConsole.effacer();
             maintenant = System.nanoTime();
             deltaTemps = maintenant - dernierTemps;
             dernierTemps = maintenant;

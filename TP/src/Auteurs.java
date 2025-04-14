@@ -10,54 +10,38 @@ public class Auteurs extends Intro {
     protected Auteurs(String nom, int x, int y) {
         super(nom, x, y);
         this.nom = "Thierry Bédard & Vincent Robert";
+        trameSonore = EKOAudio.charger("Audios\\EBK Jaaybo - Fck Everybody (Free Maxx) [Official Music Video].wav");
+        EKOAudio.jouer(trameSonore);
+        EKOConsole.couleurFond(EKOCouleur.NOIR);
+        EKOConsole.couleurTexte(EKOCouleur.GRIS_PALE);
+
 
     }
 
+
     @Override
-    public void dessiner () {
-
-       int alhpa = 0;
-
+    public void dessiner() {
 
 
         EKOConsole.afficher(x, y, nom);
 
-        EKO.attendre(2000);
+
+        EKOConsole.afficher(x2, y + 6, continuer, EKOCouleur.GRIS_FONCE);
 
 
-        for (int alpha = 0; alpha < 255; alpha += 2) {
-            EKOConsole.afficher(x2, y + 6, continuer, EKOCouleur.GRIS_FONCE);
-            EKOConsole.afficher(x2, y + 6, continuer, EKOCouleur.RVB(128, 128, 128, alpha));
-            EKO.attendre(10);
-            if (EKOTouche.ESPACE.estEnfoncee()) {
-                break;
-            }
+    }
+
+
+    @Override
+    protected void mettreAJour(long deltaTemps) {
+
+        if (EKOTouche.ESPACE.estEnfoncee()) {
+
+            TitreJeu titre = new TitreJeu("Jeu Méga On", 50, 15);
+            this.desactiver();
         }
 
-        while (!EKOTouche.ESPACE.estEnfoncee()) {
-            EKO.attendre(100);
-        }
-
-        EKOConsole.effacer();
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 
 
 }

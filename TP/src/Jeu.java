@@ -7,7 +7,7 @@ public class Jeu {
     private static final long MS_PAR_TRAME = 1000 / TPS;
 
     public static void init(){
-        //LireMap.OuvrirMap();
+        LireMap.OuvrirMap();
         EKO.initialiser("Jeu très on frl", 100, 30);
 
         loop();
@@ -20,30 +20,10 @@ public class Jeu {
         long dernierTemps = System.nanoTime();
 
 
-
-
-
-
-
-
-
+        Auteurs auteurs = new Auteurs("Thierry Bédard & Vincent Robert", 50, 15);
 
 
         while (true){
-
-
-            Intro intro = new Intro ("...", 50, 15);
-            intro.jouerTrameSonore();
-
-            Auteurs auteurs = new Auteurs("Thierry Bédard & Vincent Robert", 50, 15);
-            auteurs.dessiner();
-
-            TitreJeu titre = new TitreJeu("Jeu Méga On", 50, 15);
-            titre.dessiner();
-
-
-            Maps maps = new Maps();
-
 
 
             EKOConsole.effacer();

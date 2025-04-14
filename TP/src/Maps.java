@@ -5,10 +5,10 @@ public class Maps{
     private int indexCarte = 0;
     public Maps(){
         char [][] cartes = LireMap.listeCartes.get(indexCarte);
-        maps = new ObjetJeu[cartes[0].length][cartes.length];
 
-        for (int y = 0; y < maps[0].length; y++) {
-            for (int x = 0; x < maps.length; x++) {
+
+        for (int y = 0; y < cartes.length; y++) {
+            for (int x = 0; x < cartes[0].length; x++) {
                 creerObjet(cartes[y][x], y, x);
             }
         }
@@ -16,15 +16,15 @@ public class Maps{
 
     private void creerObjet(char valeur, int y, int x){
         switch (valeur){
-            case '#': maps[x][y] = new Mur("Mur", x, y, Etiquette.ALL);
+            case '#': new Mur("Mur", x, y, Etiquette.ALL);
             break;
-            case 'J': maps[x][y] = new Joueur("Joueur", x, y, Etiquette.ALL);
+            case 'J': new Joueur("Joueur", x, y, Etiquette.ALL);
             break;
-            case 'C': maps[x][y] = new Clef("cle", x, y, Etiquette.ALL);
+            case 'C': new Clef("cle", x, y, Etiquette.ALL);
             break;
-            case 'F': maps[x][y] = new Feu("Feu", x, y, Etiquette.ALL);
+            case 'F': new Feu("Feu", x, y, Etiquette.ALL);
             break;
-            case 'V': maps[x][y] = new PorteVerouille("PorteVerouille", x, y, Etiquette.ALL);
+            case 'V': new PorteVerouille("PorteVerouille", x, y, Etiquette.ALL);
             break;
         }
     }

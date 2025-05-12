@@ -7,9 +7,10 @@ import java.util.HashMap;
 
 public class Joueur extends ObjetVivant implements Collisionnable{
 
-    private final float[] positionFlotante;
     private Position dernierePosition;
-    boolean toucheAppuye;
+    private boolean toucheAppuye;
+    private long vitesse = 100050000;
+    private long tempEcoule = 0;
 
     /*
     *     0
@@ -18,11 +19,8 @@ public class Joueur extends ObjetVivant implements Collisionnable{
     */
     private Boolean[] mursAdjacents;
 
-    private float vitesse = 10;
-
     protected Joueur(String nom, int x, int y) {
         super(nom, x, y);
-        positionFlotante = new float[]{position.x, position.y};
         toucheAppuye = true;
         mursAdjacents = new Boolean[4];
         dernierePosition = new Position(position.x, position.y);
@@ -30,13 +28,19 @@ public class Joueur extends ObjetVivant implements Collisionnable{
 
     @Override
     protected void mettreAJour() {
+        tempEcoule+=Temps.deltaTemps;
 
-        mettreAJourMurAdjacents();
+        if(tempEcoule > vitesse) {
 
-        if(toucheAppuye)
-            changerBool();
-        else
-            entreeUtilisateur();
+            mettreAJourMurAdjacents();
+
+            if (toucheAppuye)
+                changerBool();
+            else
+                entreeUtilisateur();
+
+            tempEcoule -= vitesse;
+        }
     }
 
     private void changerBool(){
@@ -45,31 +49,27 @@ public class Joueur extends ObjetVivant implements Collisionnable{
     }
 
     private void entreeUtilisateur(){
-
-        if(EKOTouche.SHIFT_GAUCHE.estEnfoncee())
-            vitesse = 20;
-        else
-            vitesse = 10;
-
-        if(Boolean.FALSE.equals(mursAdjacents[0]) && (EKOTouche.W.estEnfoncee() || EKOTouche.FLECHE_HAUT.estEnfoncee())){
-            positionFlotante[1] -= vitesse * Temps.deltaTemps/1_000_000_000f;
-        }
-        if(Boolean.FALSE.equals(mursAdjacents[3]) && (EKOTouche.S.estEnfoncee() || EKOTouche.FLECHE_BAS.estEnfoncee())){
-            positionFlotante[1] += vitesse * Temps.deltaTemps/1_000_000_000f;
-        }
-
-        if(Boolean.FALSE.equals(mursAdjacents[1]) && (EKOTouche.A.estEnfoncee() || EKOTouche.FLECHE_GAUCHE.estEnfoncee())){
-            positionFlotante[0] -= vitesse * Temps.deltaTemps/1_000_000_000f;
-        }
-        if(Boolean.FALSE.equals(mursAdjacents[2]) && (EKOTouche.D.estEnfoncee() || EKOTouche.FLECHE_DROITE.estEnfoncee())){
-            positionFlotante[0] += vitesse * Temps.deltaTemps/1_000_000_000f;
-        }
-
         dernierePosition.x = position.x;
         dernierePosition.y = position.y;
 
-        position.x = (int)positionFlotante[0];
-        position.y = (int)positionFlotante[1];
+        if(EKOTouche.SHIFT_GAUCHE.estEnfoncee())
+            vitesse = 85000000;
+        else
+            vitesse = 100500000;
+
+        if(Boolean.FALSE.equals(mursAdjacents[0]) && (EKOTouche.W.estEnfoncee() || EKOTouche.FLECHE_HAUT.estEnfoncee())){
+            position.y --;
+        }
+        if(Boolean.FALSE.equals(mursAdjacents[3]) && (EKOTouche.S.estEnfoncee() || EKOTouche.FLECHE_BAS.estEnfoncee())){
+            position.y ++;
+        }
+
+        if(Boolean.FALSE.equals(mursAdjacents[1]) && (EKOTouche.A.estEnfoncee() || EKOTouche.FLECHE_GAUCHE.estEnfoncee())){
+            position.x --;
+        }
+        if(Boolean.FALSE.equals(mursAdjacents[2]) && (EKOTouche.D.estEnfoncee() || EKOTouche.FLECHE_DROITE.estEnfoncee())){
+            position.x ++;
+        }
     }
 
     private void mettreAJourMurAdjacents(){
@@ -95,8 +95,6 @@ public class Joueur extends ObjetVivant implements Collisionnable{
         if (autre instanceof Mur){
             position.x = dernierePosition.x;
             position.y = dernierePosition.y;
-            positionFlotante[0] = position.x;
-            positionFlotante[1] = position.y;
         }
 
         if (autre instanceof Collectible){
@@ -105,7 +103,7 @@ public class Joueur extends ObjetVivant implements Collisionnable{
 
         if (autre instanceof Ennemis){
             for(ObjetJeu o : GestionnaireObjetsJeu.obtenir().trouverObjetsJeu(Etiquette.OBJET_VIVANT)){
-                retournerPositionDepart();
+                ((ObjetVivant)o).retournerPositionDepart();
             }
             Vie.perdrePointDeVie(autre.getClass());
         }
@@ -128,14 +126,5 @@ public class Joueur extends ObjetVivant implements Collisionnable{
         if(Mur.getPositionsMur(index).x == position.x + offsetX && Mur.getPositionsMur(index).y == position.y + offsetY)
             return true;
         return false;
-    }
-
-    @Override
-    public void retournerPositionDepart(){
-        position.x = depart.x;
-        position.y = depart.y;
-
-        positionFlotante[0] = position.x;
-        positionFlotante[1] = position.y;
     }
 }

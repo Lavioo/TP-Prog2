@@ -6,6 +6,8 @@ public class Vie extends ObjetJeu{
     public static final int POINTS_VIE_MAX = 5;
     private static int vieActuelle = POINTS_VIE_MAX;
 
+    private static int essais = 0;
+
     protected Vie(String nom, int x, int y) {
         super(nom, x, y);
     }
@@ -36,5 +38,20 @@ public class Vie extends ObjetJeu{
         if (c == Fantome.class)
             Son.jouerSon(SonNom.CONTACT_ENNEMI);
 
+        if (vieActuelle < 1){
+            defaite();
+        }
+
+    }
+
+    private static void defaite(){
+        essais++;
+        remplirVie();
+        Ecran.getEcranCourant().effacerEcran();
+        Ecran.setEcranCourant(new EcranPerdu());
+    }
+
+    public static int getEssais() {
+        return essais;
     }
 }

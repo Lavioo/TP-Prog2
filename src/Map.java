@@ -29,7 +29,8 @@ public class Map extends Ecran{
         try {
               creerObjets(Files.readString(p).toLowerCase());
         }catch (IOException e){
-            System.out.println("String null");
+            this.effacerEcran();
+            Ecran.setEcranCourant(new EcranVictoire());
         }
     }
 
@@ -74,6 +75,9 @@ public class Map extends Ecran{
                 case 'c' -> listeObjetEcran.add(new Cle("cle", x, y));
                 case 'f' -> listeObjetEcran.add(new Feu("feu", x, y));
                 case '@' -> listeObjetEcran.add(new Fantome("boo", x, y));
+                case '&' -> listeObjetEcran.add(new Squelette("sql", x, y));
+                case 'g' -> listeObjetEcran.add(new Grenouille("gre", x, y));
+                case 'i' -> listeObjetEcran.add(new Insecte("ins", x, y));
             }
             x++;
         }

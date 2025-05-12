@@ -14,6 +14,11 @@ public class Mur extends ObjetJeu{
         positionsMur.add(new Position(x, y));
     }
 
+    protected Mur(String nom, int x, int y, Etiquette etiquette) {
+        super(nom, x, y, etiquette);
+        positionsMur.add(new Position(x, y));
+    }
+
     @Override
     protected void mettreAJour() {
 

@@ -14,7 +14,7 @@ public class EcranTitre extends Ecran{
 
     @Override
     protected void chargerObjets() {
-        int y = EKOConsole.hauteur()/2 - 7;
+        int y = EKOConsole.hauteur()/2 - 6;
         listeObjetEcran.add(new Texte("@..@", y, true));
         y++;
         listeObjetEcran.add(new Texte("(----)", y, true));
@@ -25,8 +25,8 @@ public class EcranTitre extends Ecran{
         y++;
         listeObjetEcran.add(new Texte("FROGGYRINTHE", y, EKOCouleur.VERT, true));
 
-        y+=4;
-        listeObjetEcran.add(new Curseur("curseur", 14, y));
+        y+=3;
+        listeObjetEcran.add(new Curseur("curseur", 0, y));
         listeObjetEcran.add(new Texte("Jouer", y, true));
 
         y += DISTANCE_ENTRE_OPTIONS;

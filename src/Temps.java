@@ -1,5 +1,5 @@
 public class Temps {
-    private static final int TPS = 60;
+    private static final int TPS = 1000;
     private static final long MS_PAR_TRAME = 1000 / TPS;
 
     private static long dernierTemps = System.nanoTime();

@@ -18,6 +18,7 @@ public class Curseur extends ObjetJeu{
 
         positionCurseur = 0;
         positions = new PositionCurseur[]{PositionCurseur.JOUER, PositionCurseur.NIVEAUX, PositionCurseur.QUITTER};
+        mettreAJourX();
 
         nbrFrameAnim = 0;
         directionGauche = true;
@@ -59,6 +60,7 @@ public class Curseur extends ObjetJeu{
             positionCurseur--;
 
             position.y -= EcranTitre.DISTANCE_ENTRE_OPTIONS;
+            mettreAJourX();
         }
 
         if(!toucheAppuye[1] && positionCurseur < 2 && (EKOTouche.S.estEnfoncee() || EKOTouche.FLECHE_BAS.estEnfoncee())){
@@ -69,7 +71,12 @@ public class Curseur extends ObjetJeu{
             positionCurseur++;
 
             position.y += EcranTitre.DISTANCE_ENTRE_OPTIONS;
+            mettreAJourX();
         }
+    }
+
+    private void mettreAJourX(){
+        this.position.x = EKOConsole.largeur()/2 - positions[positionCurseur].name().length()/2 - 4;
     }
 
     public PositionCurseur getPointeurPosition(){

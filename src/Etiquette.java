@@ -1,4 +1,5 @@
 public enum Etiquette {
     COLLECTIBLE,
-    OBJET_VIVANT
+    OBJET_VIVANT,
+    PORTE,
 }

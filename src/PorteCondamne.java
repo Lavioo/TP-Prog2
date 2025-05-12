@@ -6,7 +6,7 @@ public class PorteCondamne extends Mur{
     protected final String CARACTERE;
 
     protected PorteCondamne(String nom, int x, int y) {
-        super(nom, x, y);
+        super(nom, x, y, Etiquette.PORTE);
         CARACTERE = setCARACTERE();
 
     }

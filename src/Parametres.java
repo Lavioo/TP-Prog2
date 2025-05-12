@@ -1,16 +1,18 @@
-import eko.EKOConsole;
 import eko.EKOTouche;
 
-public class Niveaux extends Ecran{
+public class Parametres extends Ecran{
 
     private boolean echapAppuye = true;
 
-    @Override
-    protected void chargerObjets() {
-        
+    public Parametres(){
+        chargerObjets();
     }
 
     @Override
+    protected void chargerObjets() {
+        listeObjetEcran.add(new Texte("Difficulté: ☒☐", 0, 0));
+    }
+
     protected void mettreAJour(long deltaTemps) {
         if (echapAppuye){
             if(!EKOTouche.ECHAPPEMENT.estEnfoncee())
